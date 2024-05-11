@@ -57,8 +57,7 @@ gray_img = cv2.cvtColor(img_source, cv2.COLOR_BGR2GRAY): Mengonversi gambar asli
 contrast_factor = 1.5  
 brightness_factor = 30    
 adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor)
-``````python
-
+```
 contrast_factor = 1.5 dan brightness_factor = 30: Menentukan faktor kontras dan kecerahan yang akan diterapkan pada gambar.
 adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor): Menyesuaikan kontras dan kecerahan gambar menggunakan fungsi cv2.convertScaleAbs().
 
@@ -74,7 +73,7 @@ plt.title('Brightened Image')
 plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB))
 plt.axis('off')
 plt.show()
-``````python
+```
 
 plt.figure(figsize=(10, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (10, 5).
 plt.subplot(1, 2, 1): Membuat subplot pertama dalam grid 1x2.
