@@ -207,4 +207,28 @@ axs[1, 0].imshow(binary3, cmap='binary'): Menampilkan citra biner yang dihasilka
 axs[1, 1].imshow(binary4, cmap='binary'): Menampilkan citra biner yang dihasilkan dari ambang biner ketiga.
 plt.show(): Menampilkan plot.
 
+Dalam kode yang diberikan, terdapat tiga nilai ambang batas yang didapat dari proses thresholding. Mari kita lampirkan nilai-nilai tersebut dan jelaskan alasan di balik pemilihannya:
+
+### Ambang Biner Pertama (NONE)
+```python
+(thresh, binary1) = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY)
+```
+- Nilai Ambang Batas: 0
+- Alasan Pemilihan: Nilai ambang batas 0 dipilih untuk memisahkan area-area dengan intensitas piksel yang sangat rendah dalam gambar grayscale. Ini berarti semua piksel dengan intensitas yang kurang dari atau sama dengan 0 akan dianggap sebagai area hitam murni dalam citra biner. Analisis histogram menunjukkan bahwa terdapat sejumlah besar piksel dengan intensitas rendah, yang menunjukkan daerah-daerah gelap dalam gambar, dan dengan menggunakan ambang batas ini, kita dapat dengan mudah menyoroti daerah-daerah ini.
+
+### Ambang Biner Kedua (RED-BLUE)
+```python
+(thresh, binary3) = cv2.threshold(gray_img, 105, 255, cv2.THRESH_BINARY)
+```
+- Nilai Ambang Batas: 105
+- Alasan Pemilihan: Pada tahap ini, analisis lebih lanjut terhadap histogram dilakukan untuk memisahkan area-area dengan intensitas yang mewakili warna merah dan biru dalam gambar. Nilai ambang batas 105 dipilih karena menandai intensitas yang lebih tinggi dalam distribusi histogram, yang kemungkinan besar mewakili warna merah dan biru. Dengan mengaplikasikan ambang batas ini, kita dapat menyoroti area-area dalam gambar yang memiliki kecenderungan untuk memiliki warna merah dan biru.
+
+### Ambang Biner Ketiga (RED-GREEN-BLUE)
+```python
+(thresh, binary4) = cv2.threshold(gray_img, 140, 255, cv2.THRESH_BINARY)
+```
+- Nilai Ambang Batas: 140
+- Alasan Pemilihan: Pada tahap ini, analisis yang lebih mendalam terhadap histogram dilakukan untuk memisahkan daerah-daerah dengan intensitas yang tinggi, yang mencerminkan kombinasi warna merah, hijau, dan biru dalam gambar. Nilai ambang batas 140 dipilih karena menandai puncak distribusi intensitas yang lebih tinggi dalam histogram, yang secara visual mewakili kombinasi ketiga warna tersebut. Dengan menggunakan ambang batas ini, kita dapat menyoroti daerah-daerah dalam gambar yang memiliki kecenderungan untuk memiliki warna yang kompleks dan bervariasi.
+
+
 
