@@ -1,5 +1,34 @@
 # -PCD_UTS_202231001_2024_ITPLN
 
+Projek ini terkait dengan pemrosesan gambar dan analisis citra, yang merupakan area penting dalam pengembangan teknologi komputer dan kecerdasan buatan. Berikut adalah beberapa teori yang mendukung projek ini:
+
+### 1. Pemrosesan Gambar:
+Pemrosesan gambar adalah bidang ilmu yang berkaitan dengan manipulasi gambar secara digital. Teori-teori dalam pemrosesan gambar meliputi:
+
+- **Konversi Ruang Warna:** Konversi ruang warna seperti BGR (Blue-Green-Red) ke RGB (Red-Green-Blue) atau HSV (Hue-Saturation-Value) penting dalam analisis dan manipulasi gambar.
+  
+- **Penyesuaian Kontras dan Kecerahan:** Penyesuaian kontras dan kecerahan adalah teknik penting dalam memperbaiki kualitas gambar atau untuk menyesuaikan gambar agar sesuai dengan kebutuhan analisis.
+
+- **Ekstraksi Saluran Warna:** Ekstraksi saluran warna terpisah memungkinkan analisis terperinci pada komponen warna tertentu dalam sebuah gambar.
+
+- **Histogram:** Histogram gambar adalah representasi distribusi intensitas piksel dalam gambar. Ini memberikan informasi tentang distribusi warna dan kontras dalam gambar.
+
+### 2. Analisis Citra:
+Analisis citra melibatkan ekstraksi informasi yang bermakna dari gambar atau citra. Beberapa konsep kunci dalam analisis citra meliputi:
+
+- **Segmentasi Citra:** Segmentasi adalah proses membagi gambar menjadi bagian-bagian yang berarti atau objek. Ini bisa dilakukan dengan mengaplikasikan thresholding, clustering, atau teknik deteksi tepi.
+
+- **Ekstraksi Fitur:** Ekstraksi fitur melibatkan identifikasi dan ekstraksi atribut-atribut yang relevan dari gambar. Ini bisa mencakup fitur-fitur seperti tekstur, bentuk, atau pola dalam gambar.
+
+- **Klasifikasi:** Klasifikasi adalah proses untuk mengelompokkan objek-objek berdasarkan fitur-fitur yang diekstraksi. Ini melibatkan penggunaan algoritma pembelajaran mesin seperti k-Nearest Neighbors (k-NN), Support Vector Machines (SVM), atau Convolutional Neural Networks (CNN).
+
+### 3. Ruang Warna HSV:
+Model warna HSV (Hue-Saturation-Value) merupakan representasi yang lebih intuitif daripada model RGB. Dalam analisis citra, seringkali lebih mudah untuk memisahkan objek berdasarkan warna dalam ruang warna HSV daripada dalam model RGB, terutama karena HSV memisahkan informasi warna dari kecerahan dan saturasi.
+
+### 4. Thresholding:
+Thresholding adalah teknik sederhana yang digunakan untuk segmentasi citra. Ini melibatkan pengaturan nilai ambang untuk memisahkan piksel menjadi dua kelas berdasarkan intensitasnya. Dalam projek ini, thresholding digunakan untuk membuat citra biner yang menyoroti area tertentu dalam gambar.
+
+Dengan memahami konsep-konsep tersebut, kita dapat menerapkan teknik-teknik pemrosesan gambar dan analisis citra dengan lebih efektif dalam projek seperti yang telah ditunjukkan dalam kode yang diberikan.
 **Analisis Gambar dan Histogram:**
 
 1. **Gambar Asli dan Disesuaikan**: Pada gambar asli, terlihat warna-warna yang beragam dengan tingkat kontras yang mungkin kurang. Setelah disesuaikan, gambar terlihat lebih cerah dan kontrasnya ditingkatkan.
@@ -128,6 +157,7 @@ for i, channel in enumerate(channels):
 ```
 channels: List yang berisi saluran warna terpisah (merah, hijau, biru).
 colors: List yang berisi nama warna yang sesuai dengan saluran warna.
+
 for i, channel in enumerate(channels): Melakukan iterasi melalui setiap saluran warna dan indeksnya menggunakan fungsi enumerate().
 plt.figure(figsize=(15, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (15, 5).
 plt.subplot(1, 2, 1): Membuat subplot pertama dalam grid 1x2 untuk menampilkan gambar saluran warna.
