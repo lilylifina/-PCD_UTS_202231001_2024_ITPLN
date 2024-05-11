@@ -26,41 +26,39 @@
 
 Dengan langkah-langkah tersebut, program dapat memberikan pemahaman yang komprehensif tentang karakteristik gambar, termasuk komposisi warna, distribusi intensitas piksel, dan segmentasi warna.
 
-**IMPORT LIBRARY**
+**Import Library**
 ```python
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 ```
-import cv2: Mengimpor modul OpenCV untuk pengolahan gambar.
-import numpy as np: Mengimpor modul NumPy untuk manipulasi array.
-from matplotlib import pyplot as plt: Mengimpor fungsi pyplot dari modul matplotlib untuk membuat plot.
+Baris kode ini mengimpor modul cv2 dari OpenCV untuk pemrosesan gambar, modul numpy sebagai np untuk manipulasi array, dan fungsi pyplot dari modul matplotlib.pyplot sebagai plt untuk membuat plot.
 
+**Baca Gambar dan Ubah ke Format RGB**
 ```python
 img_source = cv2.imread("LILY_UTS.jpg")
 img_rgb = cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB)
 ```
-img_source = cv2.imread("LILY_UTS.jpg"): Membaca gambar dari file "LILY_UTS.jpg" menggunakan OpenCV.
-img_rgb = cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB): Mengubah format warna gambar dari BGR (yang digunakan oleh OpenCV) menjadi RGB (yang digunakan oleh matplotlib) menggunakan fungsi cv2.cvtColor().
+Kode ini membaca gambar dengan nama file "LILY_UTS.jpg" menggunakan OpenCV dan kemudian mengubah format warnanya dari BGR (yang digunakan oleh OpenCV) menjadi RGB (yang digunakan oleh matplotlib) menggunakan fungsi cv2.cvtColor().
+
+**Tampilkan Gambar Asli dan Ubah ke Grayscale**
 
 ```python
 plt.imshow(img_rgb)
-```
-plt.imshow(img_rgb): Menampilkan gambar dalam format RGB menggunakan matplotlib
-
-```python
 gray_img = cv2.cvtColor(img_source, cv2.COLOR_BGR2GRAY)
 ```
-gray_img = cv2.cvtColor(img_source, cv2.COLOR_BGR2GRAY): Mengonversi gambar asli ke citra grayscale menggunakan fungsi cv2.cvtColor().
+Kode ini menampilkan gambar asli dalam format RGB menggunakan plt.imshow(), dan juga mengonversi gambar asli ke citra grayscale menggunakan fungsi cv2.cvtColor().
 
+**Penyesuaian Kontras dan Kecerahan**
 ```python
 contrast_factor = 1.5  
 brightness_factor = 30    
 adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor)
 ```
-contrast_factor = 1.5 dan brightness_factor = 30: Menentukan faktor kontras dan kecerahan yang akan diterapkan pada gambar.
-adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor): Menyesuaikan kontras dan kecerahan gambar menggunakan fungsi cv2.convertScaleAbs().
+Dua variabel contrast_factor dan brightness_factor menentukan faktor kontras dan kecerahan yang akan diterapkan pada gambar.
+Gambar asli kemudian disesuaikan dengan kontras dan kecerahan menggunakan fungsi cv2.convertScaleAbs().
 
+**Tampilkan Gambar Asli dan yang Sudah Disesuaikan**
 ```python
 plt.figure(figsize=(10, 5))
 plt.subplot(1, 2, 1)
@@ -74,10 +72,109 @@ plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB))
 plt.axis('off')
 plt.show()
 ```
+Kode ini membuat subplot dengan ukuran (10, 5), dan menampilkan gambar asli dan yang sudah disesuaikan dalam dua subplot.
+Sumbu pada plot dihilangkan menggunakan plt.axis('off').
 
-plt.figure(figsize=(10, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (10, 5).
-plt.subplot(1, 2, 1): Membuat subplot pertama dalam grid 1x2.
-plt.subplot(1, 2, 2): Membuat subplot kedua dalam grid 1x2.
-plt.imshow(cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB)) dan plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)): Menampilkan gambar asli dan yang sudah disesuaikan dalam subplot.
-plt.axis('off'): Menghilangkan sumbu pada plot.
+**Tampilkan Saluran Warna Terpisah (RGB)**
+```python
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))
+
+# Saluran merah
+red_channel = cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)[:, :, 0]
+axs[0, 0].imshow(red_channel, cmap="gray")
+axs[0, 0].set_title('Red Channel')
+
+# Saluran hijau
+green_channel = cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)[:, :, 1]
+axs[0, 1].imshow(green_channel, cmap="gray")
+axs[0, 1].set_title('Green Channel')
+
+# Saluran biru
+blue_channel = cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)[:, :, 2]
+axs[1, 0].imshow(blue_channel, cmap="gray")
+axs[1, 0].set_title('Blue Channel')
+
+# Saluran kecerahan
+original_channel = cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)
+axs[1, 1].imshow(original_channel)
+axs[1, 1].set_title('Original Channel')
+plt.show()
+
+```
+Kode ini membuat subplot dengan ukuran (10, 10), dan menampilkan saluran warna terpisah (merah, hijau, biru) serta saluran kecerahan dalam subplot.
+Setiap saluran warna diekstrak menggunakan pemanggilan fungsi cv2.cvtColor().Kode ini membuat subplot dengan ukuran (10, 10), dan menampilkan saluran warna terpisah (merah, hijau, biru) serta saluran kecerahan dalam subplot.
+Setiap saluran warna diekstrak menggunakan pemanggilan fungsi cv2.cvtColor().
+
+**Tampilkan Histogram untuk Setiap Saluran Warna**
+
+```python
+channels = [red_channel, green_channel, blue_channel]
+colors = ['Red', 'Green', 'Blue']
+
+for i, channel in enumerate(channels):
+    plt.figure(figsize=(15, 5))
+    plt.subplot(1, 2, 1)
+    plt.imshow(channel, cmap='gray')
+    plt.title(f'{colors[i]} Channel')
+    
+    plt.subplot(1, 2, 2)
+    hist = cv2.calcHist([channel], [0], None, [256], [0, 256])
+    plt.plot(hist)
+    plt.title(f'{colors[i]} Channel Histogram')
+    plt.xlabel('Pixel Intensity')
+    plt.ylabel('Frequency')
+    
+    plt.show()
+```
+channels: List yang berisi saluran warna terpisah (merah, hijau, biru).
+colors: List yang berisi nama warna yang sesuai dengan saluran warna.
+for i, channel in enumerate(channels): Melakukan iterasi melalui setiap saluran warna dan indeksnya menggunakan fungsi enumerate().
+plt.figure(figsize=(15, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (15, 5).
+plt.subplot(1, 2, 1): Membuat subplot pertama dalam grid 1x2 untuk menampilkan gambar saluran warna.
+plt.imshow(channel, cmap='gray'): Menampilkan saluran warna dalam citra grayscale.
+plt.title(f'{colors[i]} Channel'): Memberi judul pada subplot dengan nama saluran warna yang sesuai.
+plt.subplot(1, 2, 2): Membuat subplot kedua dalam grid 1x2 untuk menampilkan histogram.
+hist = cv2.calcHist([channel], [0], None, [256], [0, 256]): Menghitung histogram dari saluran warna menggunakan cv2.calcHist().
+plt.plot(hist): Menampilkan histogram menggunakan plot garis.
+plt.title(f'{colors[i]} Channel Histogram'): Memberi judul pada subplot histogram dengan nama saluran warna yang sesuai.
+plt.xlabel('Pixel Intensity') dan plt.ylabel('Frequency'): Memberi label pada sumbu-x dan sumbu-y.
 plt.show(): Menampilkan plot.
+
+**Inisialisasi Subplot untuk Citra Biner**
+```python
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))
+
+# Ambang batas untuk mendapatkan citra biner (NONE)
+(thresh, binary1) = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY)
+axs[0, 0].imshow(binary1, cmap='gray')
+axs[0, 0].set_title('NONE')
+
+# Mask untuk warna biru dalam HSV
+img_hsv = cv2.cvtColor(img_source, cv2.COLOR_BGR2HSV)
+blue_lower = np.array([100, 50, 50])
+blue_upper = np.array([140, 255, 255])
+mask_blue = cv2.inRange(img_hsv, blue_lower, blue_upper)
+axs[0, 1].imshow(mask_blue, cmap='gray')
+axs[0, 1].set_title('BLUE')
+
+# Ambang batas untuk mendapatkan citra biner (RED-BLUE)
+(thresh, binary3) = cv2.threshold(gray_img, 105, 255, cv2.THRESH_BINARY)
+axs[1, 0].imshow(binary3, cmap='binary')
+axs[1, 0].set_title('RED-BLUE')
+
+# Ambang batas untuk mendapatkan citra biner (RED-GREEN-BLUE)
+(thresh, binary4) = cv2.threshold(gray_img, 140, 255, cv2.THRESH_BINARY)
+axs[1, 1].imshow(binary4, cmap='binary')
+axs[1, 1].set_title('RED-GREEN-BLUE')
+plt.show()
+
+```
+fig, axs = plt.subplots(2, 2, figsize=(10, 10)): Membuat subplot dengan ukuran (10, 10) dan 2x2 grid.
+(thresh, binary1) = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY): Melakukan ambang biner pada citra grayscale menggunakan cv2.threshold().
+axs[0, 0].imshow(binary1, cmap='gray'): Menampilkan citra biner yang dihasilkan dari ambang biner pertama.
+axs[0, 1].imshow(mask_blue, cmap='gray'): Menampilkan citra biner yang dihasilkan dari pemilihan warna biru menggunakan ruang warna HSV.
+axs[1, 0].imshow(binary3, cmap='binary'): Menampilkan citra biner yang dihasilkan dari ambang biner kedua.
+axs[1, 1].imshow(binary4, cmap='binary'): Menampilkan citra biner yang dihasilkan dari ambang biner ketiga.
+plt.show(): Menampilkan plot.
+
+
