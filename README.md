@@ -26,8 +26,60 @@
 
 Dengan langkah-langkah tersebut, program dapat memberikan pemahaman yang komprehensif tentang karakteristik gambar, termasuk komposisi warna, distribusi intensitas piksel, dan segmentasi warna.
 
+**IMPORT LIBRARY**
 ```python
-CODE
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
 ```
-* SasbKASB
-* dhbska
+import cv2: Mengimpor modul OpenCV untuk pengolahan gambar.
+import numpy as np: Mengimpor modul NumPy untuk manipulasi array.
+from matplotlib import pyplot as plt: Mengimpor fungsi pyplot dari modul matplotlib untuk membuat plot.
+
+```python
+img_source = cv2.imread("LILY_UTS.jpg")
+img_rgb = cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB)
+```
+img_source = cv2.imread("LILY_UTS.jpg"): Membaca gambar dari file "LILY_UTS.jpg" menggunakan OpenCV.
+img_rgb = cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB): Mengubah format warna gambar dari BGR (yang digunakan oleh OpenCV) menjadi RGB (yang digunakan oleh matplotlib) menggunakan fungsi cv2.cvtColor().
+
+```python
+plt.imshow(img_rgb)
+```
+plt.imshow(img_rgb): Menampilkan gambar dalam format RGB menggunakan matplotlib
+
+```python
+gray_img = cv2.cvtColor(img_source, cv2.COLOR_BGR2GRAY)
+```
+gray_img = cv2.cvtColor(img_source, cv2.COLOR_BGR2GRAY): Mengonversi gambar asli ke citra grayscale menggunakan fungsi cv2.cvtColor().
+
+```python
+contrast_factor = 1.5  
+brightness_factor = 30    
+adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor)
+``````python
+
+contrast_factor = 1.5 dan brightness_factor = 30: Menentukan faktor kontras dan kecerahan yang akan diterapkan pada gambar.
+adjusted_img = cv2.convertScaleAbs(img_source, alpha=contrast_factor, beta=brightness_factor): Menyesuaikan kontras dan kecerahan gambar menggunakan fungsi cv2.convertScaleAbs().
+
+```python
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.title('Original Image')
+plt.imshow(cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB))
+plt.axis('off')
+
+plt.subplot(1, 2, 2)
+plt.title('Brightened Image')
+plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB))
+plt.axis('off')
+plt.show()
+
+``````python
+
+plt.figure(figsize=(10, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (10, 5).
+plt.subplot(1, 2, 1): Membuat subplot pertama dalam grid 1x2.
+plt.subplot(1, 2, 2): Membuat subplot kedua dalam grid 1x2.
+plt.imshow(cv2.cvtColor(img_source, cv2.COLOR_BGR2RGB)) dan plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB)): Menampilkan gambar asli dan yang sudah disesuaikan dalam subplot.
+plt.axis('off'): Menghilangkan sumbu pada plot.
+plt.show(): Menampilkan plot.
