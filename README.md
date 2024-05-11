@@ -1,6 +1,6 @@
 # -PCD_UTS_202231001_2024_ITPLN
 
-### Analisislah apa yang terjadi pada citra dan lampirkan pada hasil analisi pada laporan.
+### Analisis citra 
 Berdasarkan program tersebut, kita dapat melihat beberapa hal yang terjadi pada citra:
 
 1. **Penyesuaian Kontras dan Kecerahan**: Citra mengalami peningkatan kontras dan kecerahan. Ini dapat terlihat dari perbandingan antara gambar asli dan gambar yang disesuaikan. Penyesuaian ini membantu meningkatkan ketajaman gambar dan memberikan peningkatan visual secara keseluruhan.
