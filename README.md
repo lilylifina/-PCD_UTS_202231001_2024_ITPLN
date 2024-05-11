@@ -74,7 +74,6 @@ plt.title('Brightened Image')
 plt.imshow(cv2.cvtColor(adjusted_img, cv2.COLOR_BGR2RGB))
 plt.axis('off')
 plt.show()
-
 ``````python
 
 plt.figure(figsize=(10, 5)): Membuat figure baru dengan ukuran (lebar, tinggi) = (10, 5).
