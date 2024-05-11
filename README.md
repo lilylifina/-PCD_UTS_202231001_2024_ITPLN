@@ -26,4 +26,8 @@
 
 Dengan langkah-langkah tersebut, program dapat memberikan pemahaman yang komprehensif tentang karakteristik gambar, termasuk komposisi warna, distribusi intensitas piksel, dan segmentasi warna.
 
-
+```python
+CODE
+```
+* SasbKASB
+* dhbska
