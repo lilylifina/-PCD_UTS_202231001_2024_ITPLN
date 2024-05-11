@@ -13,4 +13,4 @@ Berdasarkan program tersebut, kita dapat melihat beberapa hal yang terjadi pada 
 
 Dengan mempertimbangkan semua langkah ini, kita dapat menyimpulkan bahwa citra mengalami peningkatan visual melalui penyesuaian kontras dan kecerahan, serta pemahaman yang lebih baik tentang distribusi warna dan intensitas piksel dalam gambar.
 
-Dalam laporan, Anda dapat melampirkan hasil analisis ini dengan menggunakan gambar dan histogram yang dihasilkan oleh program. Anda dapat menjelaskan efek dari penyesuaian kontras dan kecerahan, serta implikasi dari segmentasi warna yang dilakukan melalui ambang biner. Selain itu, Anda dapat menyertakan kesimpulan dari analisis ini dan bagaimana hal tersebut berkontribusi terhadap pemahaman Anda tentang citra yang digunakan dalam proyek ini.
+
