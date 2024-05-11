@@ -29,7 +29,7 @@ Model warna HSV (Hue-Saturation-Value) merupakan representasi yang lebih intuiti
 Thresholding adalah teknik sederhana yang digunakan untuk segmentasi citra. Ini melibatkan pengaturan nilai ambang untuk memisahkan piksel menjadi dua kelas berdasarkan intensitasnya. Dalam projek ini, thresholding digunakan untuk membuat citra biner yang menyoroti area tertentu dalam gambar.
 
 Dengan memahami konsep-konsep tersebut, kita dapat menerapkan teknik-teknik pemrosesan gambar dan analisis citra dengan lebih efektif dalam projek seperti yang telah ditunjukkan dalam kode yang diberikan.
-**Analisis Gambar dan Histogram:**
+### 5. Analisis Gambar dan Histogram:
 
 1. **Gambar Asli dan Disesuaikan**: Pada gambar asli, terlihat warna-warna yang beragam dengan tingkat kontras yang mungkin kurang. Setelah disesuaikan, gambar terlihat lebih cerah dan kontrasnya ditingkatkan.
 
@@ -39,7 +39,7 @@ Dengan memahami konsep-konsep tersebut, kita dapat menerapkan teknik-teknik pemr
 
 4. **Segmentasi Warna**: Citra biner yang dihasilkan dari segmentasi warna membagi gambar menjadi beberapa area berdasarkan warna tertentu. Misalnya, citra biner "NONE" menyoroti area-area di mana tidak ada warna yang melebihi ambang batas tertentu. Sedangkan citra biner "BLUE" menyoroti area di mana warna biru dalam gambar berada dalam rentang nilai tertentu dalam ruang warna HSV.
 
-**Tahapan Cara Menyelesaikan Projek:**
+### 6. Tahapan Cara Menyelesaikan Projek:
 
 1. **Membaca Gambar**: Program dimulai dengan membaca gambar yang akan dianalisis menggunakan OpenCV.
 
